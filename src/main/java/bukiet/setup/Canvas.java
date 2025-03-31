@@ -111,12 +111,10 @@ public class Canvas extends JFrame implements ActionListener {
             }
         } else if (e.getSource() == lineButton) {
             currentMode = Mode.LINE;
-        }
-         else if (e.getSource() != lineButton) {
+        } else if (e.getSource() != lineButton) {
             currentMode = Mode.COLOR;
         }
     }
-
 
 
     public static void main(String[] args) {
