@@ -15,6 +15,7 @@ public class DrawingComponent extends JComponent {
     private int endX = -1;
     private int endY = -1;
     private boolean isDrawingLine = true;
+
     public  DrawingComponent() {
         Graphics g = image.getGraphics();
        g.setColor(Color.WHITE);

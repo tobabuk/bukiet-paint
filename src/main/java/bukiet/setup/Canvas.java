@@ -15,9 +15,11 @@ public class Canvas extends JFrame implements ActionListener {
     private JButton colorButton;
     private JButton lineButton;
     private Color currentColor = Color.BLACK;
+
     private enum Mode {
         COLOR, LINE;
     }
+
     private Mode currentMode = Mode.COLOR;
 
     public Canvas() {
