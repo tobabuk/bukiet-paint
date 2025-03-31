@@ -72,7 +72,8 @@ public class Canvas extends JFrame implements ActionListener {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (currentMode.equals("line")) {
-                    draw.endLineDrawing(e.getX(), e.getY(), currentColor);                }
+                    draw.endLineDrawing(e.getX(), e.getY(), currentColor);
+                }
             }
 
             @Override
