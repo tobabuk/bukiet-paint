@@ -12,10 +12,13 @@ import java.awt.event.ActionListener;
 
 public class Canvas extends JFrame implements ActionListener {
     private final DrawingComponent draw = new DrawingComponent();
-    JButton colorButton;
-    JButton lineButton;
-    Color currentColor = Color.BLACK;
-    String currentMode = "color";
+    private JButton colorButton;
+    private JButton lineButton;
+    private Color currentColor = Color.BLACK;
+    private enum Mode {
+        COLOR, LINE;
+    }
+    private Mode currentMode = Mode.COLOR;
 
     public Canvas() {
         setTitle("Paint Application");
@@ -40,7 +43,7 @@ public class Canvas extends JFrame implements ActionListener {
         draw.addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent event) {
-                if (!currentMode.equals("line")) {
+                if (!currentMode.equals(Mode.LINE)) {
                     draw.drawFromMouse(event.getX(), event.getY(), currentColor);
                 }
             }
@@ -64,14 +67,14 @@ public class Canvas extends JFrame implements ActionListener {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                if (currentMode.equals("line")) {
+                if (currentMode.equals(Mode.LINE)) {
                     draw.startLineDrawing(e.getX(), e.getY());
                 }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (currentMode.equals("line")) {
+                if (currentMode.equals(Mode.LINE)) {
                     draw.endLineDrawing(e.getX(), e.getY(), currentColor);
                 }
             }
@@ -97,7 +100,7 @@ public class Canvas extends JFrame implements ActionListener {
             }
         } else if (e.getSource() == lineButton) {
 
-            currentMode = "line";
+            currentMode = Mode.LINE;
         }
     }
 
