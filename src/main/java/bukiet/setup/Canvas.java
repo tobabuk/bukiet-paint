@@ -76,7 +76,7 @@ public class Canvas extends JFrame implements ActionListener {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (currentMode.equals(Mode.LINE)) {
-                    draw.startPreview(e.getX(),e.getY());
+                    draw.startPreview(e.getX(), e.getY());
 
                 }
             }
@@ -110,10 +110,9 @@ public class Canvas extends JFrame implements ActionListener {
                 currentColor = color;
             }
         } else if (e.getSource() == lineButton) {
-
             currentMode = Mode.LINE;
         }
-        else if (e.getSource() != lineButton) {
+         else if (e.getSource() != lineButton) {
             currentMode = Mode.COLOR;
         }
     }

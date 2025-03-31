@@ -69,12 +69,14 @@ public void drawLine(int startX, int startY, int endX, int endY,  Color currentC
             drawLine(startX, startY, endX, endY, currentColor);
         }
     }
+
     public void startPreview(int x, int y) {
         startX = x;
         startY = y;
         isDrawingLine = true;
         repaint();
     }
+    
     public void endPreview(int x, int y) {
         endX = x;
         endY = y;
