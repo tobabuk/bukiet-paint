@@ -26,6 +26,11 @@ public class DrawingComponent extends JComponent {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, null);
+
+        if (isDrawingLine) {
+            g.setColor(Color.DARK_GRAY);
+            g.drawLine(startX, startY, endX, endY);
+        }
     }
 
 //have to make this so that the mouse dragged doesnt follow all x and y coordinatat , instead want just start
@@ -39,9 +44,11 @@ public void drawLine(int startX, int startY, int endX, int endY,  Color currentC
         this.startY = -1;
         this.endX = -1;
         this.endY = -1;
-        isDrawingLine = false;
+        isDrawingLine = true;
+
 
 }
+
 
     public void drawFromMouse(int x, int y, Color currentColor) {
         Graphics g = image.getGraphics();
@@ -55,12 +62,6 @@ public void drawLine(int startX, int startY, int endX, int endY,  Color currentC
         repaint();
     }
 
-    public void startLineDrawing(int x, int y) {
-        startX = x;
-        startY = y;
-        isDrawingLine = true;
-    }
-
     public void endLineDrawing(int x, int y, Color currentColor) {
         if (isDrawingLine) {
             endX = x;
@@ -68,5 +69,17 @@ public void drawLine(int startX, int startY, int endX, int endY,  Color currentC
             drawLine(startX, startY, endX, endY, currentColor);
         }
     }
+    public void startPreview(int x, int y) {
+        startX = x;
+        startY = y;
+        isDrawingLine = true;
+        repaint();
+    }
+    public void endPreview(int x, int y) {
+        endX = x;
+        endY = y;
+        repaint();
+    }
+
 
 }
