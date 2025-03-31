@@ -21,14 +21,16 @@ public class DrawingComponent extends JComponent {
     private int startY = -1;
     private int endX = -1;
     private int endY = -1;
-boolean isDrawingLine = true;
+    boolean isDrawingLine = true;
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, null);
     }
+
 //have to make this so that the mouse dragged doesnt follow all x and y coordinatat , instead want just start
-public void drawLine(int startX, int startY, int endX, int endY,  Color currentColor){
+public void drawLine(int startX, int startY, int endX, int endY,  Color currentColor) {
     Graphics g = image.getGraphics();
     g.setColor(currentColor);
     g.drawLine(startX, startY, endX, endY);
