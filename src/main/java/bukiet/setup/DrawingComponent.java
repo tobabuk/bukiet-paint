@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 
-
 public class DrawingComponent extends JComponent {
     private final BufferedImage image = new BufferedImage(800, 600, BufferedImage.TYPE_INT_RGB);
     private int oldX = -1;
@@ -16,9 +15,9 @@ public class DrawingComponent extends JComponent {
     private int endY = -1;
     private boolean isDrawingLine = true;
 
-    public  DrawingComponent() {
+    public DrawingComponent() {
         Graphics g = image.getGraphics();
-       g.setColor(Color.WHITE);
+        g.setColor(Color.WHITE);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
     }
 
@@ -33,8 +32,8 @@ public class DrawingComponent extends JComponent {
         }
     }
 
-//have to make this so that the mouse dragged doesnt follow all x and y coordinatat , instead want just start
-public void drawLine(int startX, int startY, int endX, int endY,  Color currentColor) {
+    //have to make this so that the mouse dragged doesnt follow all x and y coordinatat , instead want just start
+    public void drawLine(int startX, int startY, int endX, int endY, Color currentColor) {
         Graphics g = image.getGraphics();
         g.setColor(currentColor);
         g.drawLine(startX, startY, endX, endY);
@@ -47,7 +46,7 @@ public void drawLine(int startX, int startY, int endX, int endY,  Color currentC
         isDrawingLine = true;
 
 
-}
+    }
 
 
     public void drawFromMouse(int x, int y, Color currentColor) {
@@ -76,7 +75,7 @@ public void drawLine(int startX, int startY, int endX, int endY,  Color currentC
         isDrawingLine = true;
         repaint();
     }
-    
+
     public void endPreview(int x, int y) {
         endX = x;
         endY = y;

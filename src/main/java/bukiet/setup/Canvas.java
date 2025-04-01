@@ -9,7 +9,6 @@ import java.awt.event.MouseMotionListener;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 
-
 public class Canvas extends JFrame implements ActionListener {
     private final DrawingComponent draw = new DrawingComponent();
     private JButton colorButton;
@@ -43,15 +42,12 @@ public class Canvas extends JFrame implements ActionListener {
         add(draw, BorderLayout.CENTER);
 
 
-
-
         draw.addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent event) {
                 if (!currentMode.equals(Mode.LINE)) {
                     draw.drawFromMouse(event.getX(), event.getY(), currentColor);
-                }
-                else {
+                } else {
                     draw.endPreview(event.getX(), event.getY());
                 }
             }
@@ -62,7 +58,6 @@ public class Canvas extends JFrame implements ActionListener {
 
             }
         });
-
 
 
         draw.addMouseListener(new MouseListener() {
@@ -114,11 +109,8 @@ public class Canvas extends JFrame implements ActionListener {
         }
     }
 
-
     public static void main(String[] args) {
         Canvas frame = new Canvas();
         frame.setVisible(true);
-
-
     }
 }
