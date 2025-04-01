@@ -65,8 +65,6 @@ public class Canvas extends JFrame implements ActionListener {
 
 
 
-
-
         draw.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
