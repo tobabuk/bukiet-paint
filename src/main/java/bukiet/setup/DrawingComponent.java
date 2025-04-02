@@ -1,24 +1,34 @@
 package bukiet.setup;
 
+import bukiet.paint.PencilTool;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Draw the buffered image to the screen
+ */
 
 public class DrawingComponent extends JComponent {
     private final BufferedImage image = new BufferedImage(800, 600, BufferedImage.TYPE_INT_RGB);
-    private int oldX = -1;
-    private int oldY = -1;
+
     private int startX = -1;
     private int startY = -1;
     private int endX = -1;
     private int endY = -1;
     private boolean isDrawingLine = true;
+    private PencilTool tool = new PencilTool();
+
 
     public DrawingComponent() {
         Graphics g = image.getGraphics();
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
+    }
+
+    public BufferedImage getImage() {
+        return image;
     }
 
     @Override
@@ -36,6 +46,7 @@ public class DrawingComponent extends JComponent {
     public void drawLine(int startX, int startY, int endX, int endY, Color currentColor) {
         Graphics g = image.getGraphics();
         g.setColor(currentColor);
+
         g.drawLine(startX, startY, endX, endY);
         g.dispose();
         repaint();
@@ -52,13 +63,9 @@ public class DrawingComponent extends JComponent {
     public void drawFromMouse(int x, int y, Color currentColor) {
         Graphics g = image.getGraphics();
         g.setColor(currentColor);
-        if (oldX != -1 && oldY != -1) {
-            g.drawLine(oldX, oldY, x, y);
-        }
-        oldX = x;
-        oldY = y;
-        g.dispose();
-        repaint();
+        tool.pressed(g, x, y);
+        tool.dragged(g, x, y);
+        tool.released(g, x, y);
     }
 
     public void endLineDrawing(int x, int y, Color currentColor) {

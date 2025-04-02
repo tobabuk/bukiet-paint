@@ -1,5 +1,7 @@
 package bukiet.setup;
 
+import bukiet.paint.PencilTool;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,16 +11,18 @@ import java.awt.event.MouseMotionListener;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 
+
+
 public class Canvas extends JFrame implements ActionListener {
     private final DrawingComponent draw = new DrawingComponent();
     private JButton colorButton;
     private JButton lineButton;
     private JButton penButton;
     private Color currentColor = Color.BLACK;
-
     private enum Mode {
         COLOR, LINE;
     }
+    private PencilTool tool = new PencilTool();
 
     private Mode currentMode = Mode.COLOR;
 
@@ -45,11 +49,10 @@ public class Canvas extends JFrame implements ActionListener {
         draw.addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent event) {
-                if (!currentMode.equals(Mode.LINE)) {
-                    draw.drawFromMouse(event.getX(), event.getY(), currentColor);
-                } else {
-                    draw.endPreview(event.getX(), event.getY());
-                }
+                Graphics g = draw.getImage().getGraphics();
+                g.setColor(currentColor);
+                tool.dragged(g,event.getX(), event.getY());
+                draw.repaint();
             }
 
 
@@ -68,18 +71,18 @@ public class Canvas extends JFrame implements ActionListener {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                if (currentMode.equals(Mode.LINE)) {
-                    draw.startPreview(e.getX(), e.getY());
-
-                }
+                Graphics g = draw.getImage().getGraphics();
+                g.setColor(Color.BLACK);
+                tool.pressed(g,e.getX(), e.getY());
+                draw.repaint();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (currentMode.equals(Mode.LINE)) {
-                    draw.endPreview(e.getX(), e.getY());
-                    draw.endLineDrawing(e.getX(), e.getY(), currentColor);
-                }
+                Graphics g = draw.getImage().getGraphics();
+                g.setColor(Color.BLACK);
+                tool.released(g,e.getX(), e.getY());
+                draw.repaint();
 
             }
 
