@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class EraserToolTest {
 
     private Graphics g = mock();
+
     @Test
 
     void pressed() {
