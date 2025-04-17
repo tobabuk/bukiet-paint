@@ -20,6 +20,7 @@ public class EraserTool implements Tool {
     public int getY() {
         return y;
     }
+
     @Override
     public void pressed(Graphics g, int x, int y) {
         g.setColor(Color.white);
