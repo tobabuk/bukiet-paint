@@ -3,6 +3,7 @@ package bukiet.paint;
 import java.awt.*;
 
 public class PencilTool implements Tool {
+
     private int x;
     private int y;
 
