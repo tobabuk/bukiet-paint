@@ -1,29 +1,34 @@
 package bukiet.paint;
-
 import java.awt.*;
 
-public class PencilTool implements Tool{
+public class EraserTool implements Tool {
     private int x;
     private int y;
+    int size = 15;
+
+
+    public int getSize(){
+        return size;
+    }
     public int getX() {
         return x;
     }
 
-    public int getY() {
+    public int getY(){
         return y;
     }
-
-
     @Override
     public void pressed(Graphics g, int x, int y) {
-      this.x = x;
-      this.y = y;
-      g.drawLine(x,y,x,y);
+        g.setColor(Color.white);
+        this.x = x;
+        this.y = y;
+        g.fillRect(x - size / 2, y - size / 2, size, size);
     }
 
     @Override
     public void dragged(Graphics g, int x, int y) {
-        g.drawLine(this.x,this.y,x,y);
+        g.setColor(Color.white);
+        g.fillRect(x - size / 2, y - size / 2, size, size);
         this.x = x;
         this.y = y;
     }

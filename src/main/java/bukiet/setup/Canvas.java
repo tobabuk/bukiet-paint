@@ -1,101 +1,61 @@
 package bukiet.setup;
 
-import bukiet.paint.PencilTool;
+import bukiet.paint.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 public class Canvas extends JFrame implements ActionListener {
-    private final DrawingComponent draw = new DrawingComponent();
+
+    private final DrawingComponent canvas = new DrawingComponent();
     private JButton colorButton;
     private JButton lineButton;
     private JButton penButton;
+    private JButton eraserButton;
     private Color currentColor = Color.BLACK;
-    private enum Mode {
-        COLOR, LINE;
-    }
-    private PencilTool tool = new PencilTool();
-
-    private Mode currentMode = Mode.COLOR;
+    private Tool tool = new LineTool();
+    private PaintController controller;
 
     public Canvas() {
-        setTitle("Paint Application");
+
+        setTitle("Paint");
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
         setLayout(new BorderLayout());
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         colorButton = new JButton("Choose Color");
         lineButton = new JButton("Line");
         penButton = new JButton("Pen");
+        eraserButton = new JButton("Eraser");
         colorButton.addActionListener(this);
         lineButton.addActionListener(this);
         penButton.addActionListener(this);
+        eraserButton.addActionListener(this);
         panel.add(colorButton);
         panel.add(penButton);
         panel.add(lineButton);
+        panel.add(eraserButton);
         add(panel, BorderLayout.EAST);
-        add(draw, BorderLayout.CENTER);
+        add(canvas, BorderLayout.CENTER);
+
+        canvas.setTool(tool);
 
 
-        draw.addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            public void mouseDragged(MouseEvent event) {
-                Graphics g = draw.getImage().getGraphics();
-                g.setColor(currentColor);
-                tool.dragged(g,event.getX(), event.getY());
-                draw.repaint();
-            }
+        controller = new PaintController(canvas, currentColor, tool);
+        controller.mouseController();
 
+    }
 
-            @Override
-            public void mouseMoved(MouseEvent event) {
-
-            }
-        });
-
-
-        draw.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                Graphics g = draw.getImage().getGraphics();
-                g.setColor(Color.BLACK);
-                tool.pressed(g,e.getX(), e.getY());
-                draw.repaint();
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                Graphics g = draw.getImage().getGraphics();
-                g.setColor(Color.BLACK);
-                tool.released(g,e.getX(), e.getY());
-                draw.repaint();
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
+    public static void main(String[] args) {
+        new Canvas().setVisible(true);
     }
 
     @Override
@@ -104,16 +64,20 @@ public class Canvas extends JFrame implements ActionListener {
             Color color = JColorChooser.showDialog(this, "Pick a Color", currentColor);
             if (color != null) {
                 currentColor = color;
+                controller.setCurrentColor(color);
             }
         } else if (e.getSource() == lineButton) {
-            currentMode = Mode.LINE;
-        } else if (e.getSource() != lineButton) {
-            currentMode = Mode.COLOR;
+            tool = new LineTool();
+            canvas.setTool(tool);
+            controller.setTool(tool);
+        } else if (e.getSource() == penButton) {
+            tool = new PencilTool();
+            canvas.setTool(tool);
+            controller.setTool(tool);
+        } else if (e.getSource() == eraserButton) {
+            tool = new EraserTool();
+            canvas.setTool(tool);
+            controller.setTool(tool);
         }
-    }
-
-    public static void main(String[] args) {
-        Canvas frame = new Canvas();
-        frame.setVisible(true);
     }
 }
