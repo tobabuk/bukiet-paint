@@ -1,20 +1,23 @@
 package bukiet.paint;
+
 import java.awt.*;
 
 public class EraserTool implements Tool {
+
     private int x;
     private int y;
     int size = 15;
 
 
-    public int getSize(){
+    public int getSize() {
         return size;
     }
+
     public int getX() {
         return x;
     }
 
-    public int getY(){
+    public int getY() {
         return y;
     }
     @Override
