@@ -2,7 +2,7 @@ package bukiet.paint;
 
 import java.awt.*;
 
-public class LineTool implements Tool{
+public class LineTool implements Tool {
 
     public int getX1() {
         return x1;
