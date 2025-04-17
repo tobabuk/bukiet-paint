@@ -1,4 +1,5 @@
 package bukiet.paint;
+
 import org.junit.jupiter.api.Test;
 import java.awt.*;
 import static org.mockito.Mockito.*;

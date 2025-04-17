@@ -23,6 +23,7 @@ public class LineTool implements Tool{
     private int y1;
     private int x2;
     private int y2;
+
     @Override
     public void pressed(Graphics g, int x, int y) {
         this.x1 = x;

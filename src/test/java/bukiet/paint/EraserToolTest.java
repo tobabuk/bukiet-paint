@@ -3,9 +3,10 @@ package bukiet.paint;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 import java.awt.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class EraserToolTest {
+
     private Graphics g = mock();
     @Test
 
@@ -24,7 +25,7 @@ class EraserToolTest {
 
     @Test
 
-    void dragged(){
+    void dragged() {
         //given
         EraserTool tool = new EraserTool();
 
