@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LineToolTest {
 
-
-
         private Graphics g = mock();
 
         @Test

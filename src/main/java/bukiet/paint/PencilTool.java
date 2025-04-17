@@ -26,7 +26,7 @@ public class PencilTool implements Tool {
 
     @Override
     public void dragged(Graphics g, int x, int y) {
-        g.drawLine(this.x,this.y,x,y);
+        g.drawLine(this.x, this.y, x, y);
         this.x = x;
         this.y = y;
     }
