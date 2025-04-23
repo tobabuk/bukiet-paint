@@ -68,15 +68,12 @@ public class Canvas extends JFrame implements ActionListener {
             }
         } else if (e.getSource() == lineButton) {
             tool = new LineTool();
-            canvas.setTool(tool);
             controller.setTool(tool);
         } else if (e.getSource() == penButton) {
             tool = new PencilTool();
-            canvas.setTool(tool);
             controller.setTool(tool);
         } else if (e.getSource() == eraserButton) {
             tool = new EraserTool();
-            canvas.setTool(tool);
             controller.setTool(tool);
         }
     }

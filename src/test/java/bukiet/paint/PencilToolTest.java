@@ -20,7 +20,8 @@ class PencilToolTest {
         tool.pressed(g, 50, 100);
         //then
 
-        assertEquals(50, tool.getX(), tool.getY());
+        assertEquals(50, tool.getX());
+        assertEquals(100, tool.getY());
         verify(g).drawLine(50, 100, 50, 100);
 
     }
@@ -33,8 +34,8 @@ class PencilToolTest {
         //when
         tool.dragged(g, 200, 150);
         //then
-        assertEquals(200, tool.getX(), tool.getY());
-        assertEquals(150, tool.getX(), tool.getY());
+        assertEquals(200, tool.getX());
+        assertEquals(150, tool.getY());
         verify(g).drawLine(50, 100, 200, 150);
 
     }

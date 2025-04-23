@@ -4,6 +4,11 @@ import java.awt.*;
 
 public class LineTool implements Tool {
 
+    private int x1;
+    private int y1;
+    private int x2;
+    private int y2;
+
     public int getX1() {
         return x1;
     }
@@ -19,11 +24,6 @@ public class LineTool implements Tool {
     public int getY2() {
         return y2;
     }
-
-    private int x1;
-    private int y1;
-    private int x2;
-    private int y2;
 
     @Override
     public void pressed(Graphics g, int x, int y) {
