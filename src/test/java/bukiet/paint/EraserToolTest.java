@@ -20,10 +20,11 @@ class EraserToolTest {
         EraserTool tool = new EraserTool();
 
         //when
-        tool.pressed(, g, 50, 100);
+        tool.pressed(image, g, 50, 100, currentColor);
         //then
-        assertEquals(50, tool.getX(), tool.getY());
-        verify(g).fillRect(43, 93, tool.getSize(), tool.getSize());
+        assertEquals(50, tool.getX());
+        assertEquals(100, tool.getY());
+
 
     }
 
@@ -34,13 +35,13 @@ class EraserToolTest {
         EraserTool tool = new EraserTool();
 
         //when
-        tool.pressed(, g, 50, 100);
+        tool.pressed(image, g, 50, 100, currentColor);
 
         tool.dragged(g, 200, 150);
         //then
         assertEquals(200, tool.getX(), tool.getY());
         assertEquals(150, tool.getX(), tool.getY());
-        verify(g).fillRect(43, 93, tool.getSize(), tool.getSize());
+
 
     }
 }
