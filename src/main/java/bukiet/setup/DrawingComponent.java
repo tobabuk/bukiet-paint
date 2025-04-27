@@ -33,7 +33,7 @@ public class DrawingComponent extends JComponent {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, null);
-        Graphics2D g2= (Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) g;
                 tool.preview(g2);
     }
 

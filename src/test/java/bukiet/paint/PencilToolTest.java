@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PencilToolTest {
     private Graphics2D g = mock();
-    private BufferedImage image;
-    private Color currentColor;
+    private BufferedImage image = mock();
+    private Color currentColor = mock();
     @Test
     void pressed() {
         //given

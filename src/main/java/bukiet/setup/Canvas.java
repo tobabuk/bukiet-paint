@@ -80,7 +80,7 @@ public class Canvas extends JFrame implements ActionListener {
             tool = new EraserTool();
             controller.setTool(tool);
         }
-        else if (e.getSource()== bucketFill) {
+        else if (e.getSource() == bucketFill) {
             tool = new BucketFillTool();
             controller.setTool(tool);
         }
