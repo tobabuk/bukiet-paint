@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PencilToolTest {
     private Graphics2D g = mock();
-    private BufferedImage image ;
+    private BufferedImage image;
     private Color currentColor;
     @Test
     void pressed() {
@@ -19,7 +19,7 @@ class PencilToolTest {
 
 
         //when
-        tool.pressed(image , g, 50, 100, currentColor);
+        tool.pressed(image, g, 50, 100, currentColor);
         //then
 
         assertEquals(50, tool.getX());
@@ -32,7 +32,7 @@ class PencilToolTest {
     void dragged() {
         //given
         PencilTool tool = new PencilTool();
-        tool.pressed(image , g, 50, 100, currentColor);
+        tool.pressed(image, g, 50, 100, currentColor);
         //when
         tool.dragged(g, 200, 150);
         //then

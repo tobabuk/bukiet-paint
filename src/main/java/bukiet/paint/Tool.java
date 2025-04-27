@@ -13,5 +13,5 @@ public interface Tool {
 
     void preview(Graphics2D g);
 
-    void pressed( BufferedImage image,  Graphics2D g, int x, int y, Color currentColor);
+    void pressed(BufferedImage image,  Graphics2D g, int x, int y, Color currentColor);
 }

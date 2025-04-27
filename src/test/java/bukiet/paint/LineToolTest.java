@@ -20,7 +20,7 @@ class LineToolTest {
 
 
             //when
-            tool.pressed(image , g, 50, 100, currentColor );
+            tool.pressed(image, g,50,100, currentColor );
             //then
 
             assertEquals(50, tool.getX1(), tool.getY1());
@@ -45,7 +45,7 @@ class LineToolTest {
             //given
             LineTool tool = new LineTool();
             //when
-            tool.pressed(image , g, 50, 100, currentColor );
+            tool.pressed(image, g, 50, 100, currentColor );
             tool.dragged(g, 200, 150);
             tool.released(g, 100, 200);
             //then
