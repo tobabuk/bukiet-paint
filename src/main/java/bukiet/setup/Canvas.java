@@ -18,6 +18,7 @@ public class Canvas extends JFrame implements ActionListener {
     private JButton lineButton;
     private JButton penButton;
     private JButton eraserButton;
+    private JButton bucketFill;
     private Color currentColor = Color.BLACK;
     private Tool tool = new LineTool();
     private PaintController controller;
@@ -34,14 +35,17 @@ public class Canvas extends JFrame implements ActionListener {
         colorButton = new JButton("Choose Color");
         lineButton = new JButton("Line");
         penButton = new JButton("Pen");
+        bucketFill = new JButton("Bucket Fill");
         eraserButton = new JButton("Eraser");
         colorButton.addActionListener(this);
         lineButton.addActionListener(this);
         penButton.addActionListener(this);
+        bucketFill.addActionListener(this);
         eraserButton.addActionListener(this);
         panel.add(colorButton);
         panel.add(penButton);
         panel.add(lineButton);
+        panel.add(bucketFill);
         panel.add(eraserButton);
         add(panel, BorderLayout.EAST);
         add(canvas, BorderLayout.CENTER);
@@ -74,6 +78,10 @@ public class Canvas extends JFrame implements ActionListener {
             controller.setTool(tool);
         } else if (e.getSource() == eraserButton) {
             tool = new EraserTool();
+            controller.setTool(tool);
+        }
+        else if (e.getSource()== bucketFill) {
+            tool = new BucketFillTool();
             controller.setTool(tool);
         }
     }

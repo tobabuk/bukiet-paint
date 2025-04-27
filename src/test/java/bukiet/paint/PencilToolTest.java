@@ -3,13 +3,15 @@ package bukiet.paint;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class PencilToolTest {
-    private Graphics g = mock();
-
+    private Graphics2D g = mock();
+    private BufferedImage image ;
+    private Color currentColor;
     @Test
     void pressed() {
         //given
@@ -17,7 +19,7 @@ class PencilToolTest {
 
 
         //when
-        tool.pressed(g, 50, 100);
+        tool.pressed(image , g, 50, 100, currentColor);
         //then
 
         assertEquals(50, tool.getX());
@@ -30,7 +32,7 @@ class PencilToolTest {
     void dragged() {
         //given
         PencilTool tool = new PencilTool();
-        tool.pressed(g, 50, 100);
+        tool.pressed(image , g, 50, 100, currentColor);
         //when
         tool.dragged(g, 200, 150);
         //then
