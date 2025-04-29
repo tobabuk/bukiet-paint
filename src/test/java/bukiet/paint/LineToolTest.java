@@ -2,12 +2,16 @@ package bukiet.paint;
 
 import org.junit.jupiter.api.Test;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LineToolTest {
 
-        private Graphics g = mock();
+        private Graphics2D g = mock();
+        private BufferedImage image = mock();
+        private Color currentColor = mock();
 
         @Test
         void pressed() {
@@ -16,7 +20,7 @@ class LineToolTest {
 
 
             //when
-            tool.pressed(g, 50, 100);
+            tool.pressed(image, g, 50, 100, currentColor);
             //then
 
             assertEquals(50, tool.getX1(), tool.getY1());
@@ -27,7 +31,7 @@ class LineToolTest {
         void dragged() {
             //given
             LineTool tool = new LineTool();
-            tool.pressed(g, 50, 100);
+            tool.pressed(image, g, 50, 100, currentColor);
             //when
             tool.dragged(g, 200, 150);
             //then
@@ -41,7 +45,7 @@ class LineToolTest {
             //given
             LineTool tool = new LineTool();
             //when
-            tool.pressed(g, 50, 100);
+            tool.pressed(image, g, 50, 100, currentColor);
             tool.dragged(g, 200, 150);
             tool.released(g, 100, 200);
             //then
