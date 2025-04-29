@@ -20,7 +20,6 @@ public class EraserTool implements Tool {
 
     @Override
     public void pressed(BufferedImage image, Graphics2D g, int x, int y, Color currentColor) {
-        g.setColor(Color.white);
         this.x = x;
         this.y = y;
     }

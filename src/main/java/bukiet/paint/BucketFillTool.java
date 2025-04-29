@@ -6,8 +6,8 @@ import java.awt.image.BufferedImage;
 public class BucketFillTool implements Tool {
     private int x;
     private int y;
-    private int originalColor;
-    private Color fillColor;
+
+
 
 
     public int getX() {
